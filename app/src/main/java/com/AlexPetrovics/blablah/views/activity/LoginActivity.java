@@ -33,8 +33,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     EditText editPass;
     @BindView(R.id.text_status_auth)
     TextView textStatusAuth;
-    @BindView(R.id.button_create_room)
-    Button buttonCreateRoom;
+
     @BindView(R.id.button_enter_room)
     Button buttonEnterRoom;
     @BindView(R.id.linear_button_room)
@@ -51,15 +50,13 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         loginPresenter = new LoginPresenter(this);
     }
 
-    @OnClick({R.id.button_auth, R.id.button_create_room, R.id.button_enter_room,R.id.button_register})
+    @OnClick({R.id.button_auth, R.id.button_enter_room,R.id.button_register})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.button_auth:
                 checkLoginDetails();
                 break;
-            case R.id.button_create_room:
-                loginPresenter.showRoomDialogInActivity();
-                break;
+
             case R.id.button_enter_room:
                 loginPresenter.showRoomDialogInActivity();
                 break;
@@ -79,6 +76,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         buttonAuth.setVisibility(View.GONE);
         textStatusAuth.setVisibility(View.VISIBLE);
         linearButtonRoom.setVisibility(View.VISIBLE);
+        buttonRegister.setVisibility(View.GONE);
+        editMail.setVisibility(View.GONE);
+        editPass.setVisibility(View.GONE);
     }
 
     @Override
@@ -102,6 +102,17 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         intent.putExtra(Utils.EXTRA_ROOM_NAME, roomName);
         startActivity(intent);
     }
+    private void checkLoginDetails() {
+        if(!TextUtils.isEmpty(editMail.getText().toString()) && !TextUtils.isEmpty(editPass.getText().toString())){
+            initLogin(editMail.getText().toString(), editPass.getText().toString());
+        }else{
+            if(TextUtils.isEmpty(editMail.getText().toString())){
+                editMail.setError("Please enter a valid email");
+            }if(TextUtils.isEmpty(editPass.getText().toString())){
+                editPass.setError("Please enter password");
+            }
+        }
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -120,17 +131,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         startActivity(intent);
     }
 
-    private void checkLoginDetails() {
-        if(!TextUtils.isEmpty(editMail.getText().toString()) && !TextUtils.isEmpty(editPass.getText().toString())){
-            initLogin(editMail.getText().toString(), editPass.getText().toString());
-        }else{
-            if(TextUtils.isEmpty(editMail.getText().toString())){
-                editMail.setError("Please enter a valid email");
-            }if(TextUtils.isEmpty(editPass.getText().toString())){
-                editPass.setError("Please enter password");
-            }
-        }
-    }
+
     private void initLogin(String email, String password) {
 
         loginPresenter.login(this, email, password);

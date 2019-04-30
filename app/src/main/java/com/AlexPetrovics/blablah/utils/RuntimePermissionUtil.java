@@ -26,12 +26,6 @@ public class RuntimePermissionUtil {
         }
     }
 
-    public static void requestPermission(final Activity activity, final String[] permissions,
-                                         final int REQUEST_CODE) {
-        // No explanation needed, we can request the permission.
-        ActivityCompat.requestPermissions(activity, permissions, REQUEST_CODE);
-    }
-
     public static void requestPermission(final Activity activity, final String permission,
                                          final int REQUEST_CODE) {
         // No explanation needed, we can request the permission.

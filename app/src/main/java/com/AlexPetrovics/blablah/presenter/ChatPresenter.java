@@ -26,16 +26,6 @@ public class ChatPresenter implements FirebaseCallBack, ModelCallBack {
         chatView.clearEditText();
     }
 
-    public void setListener(String roomname) {
-        FirebaseManager.getInstance(roomname, this).addMessageListeners();
-    }
-
-    public void onDestroy(String roomName) {
-        FirebaseManager.getInstance(roomName, this).removeListener();
-        FirebaseManager.getInstance(roomName, this).destroy();
-        chatView = null;
-    }
-
     @Override
     public void onNewMessage(DataSnapshot dataSnapshot) {
         message.addMessages(dataSnapshot, this);
@@ -47,4 +37,16 @@ public class ChatPresenter implements FirebaseCallBack, ModelCallBack {
             chatView.updateList(messages);
         }
     }
+    public void setListener(String roomname) {
+        FirebaseManager.getInstance(roomname, this).addMessageListeners();
+    }
+
+    public void onDestroy(String roomName) {
+        FirebaseManager.getInstance(roomName, this).removeListener();
+        FirebaseManager.getInstance(roomName, this).destroy();
+        chatView = null;
+    }
+
+
+
 }

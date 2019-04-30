@@ -34,6 +34,14 @@ public class FirebaseManager implements ChildEventListener {
         databaseReference.addChildEventListener(this);
     }
 
+    public void sendMessageToFirebase(String message) { //actual message sending part
+        Map<String, Object> map = new HashMap<>();
+        map.put("text", message);
+        map.put("time", System.currentTimeMillis());
+        map.put("senderId", FirebaseAuth.getInstance().getCurrentUser().getEmail());
+        String keyToPush = databaseReference.push().getKey();
+        databaseReference.child(keyToPush).setValue(map);
+    }
     public void removeListener() {
         databaseReference.removeEventListener(this);
     }
@@ -63,14 +71,7 @@ public class FirebaseManager implements ChildEventListener {
 
     }
 
-    public void sendMessageToFirebase(String message) {
-        Map<String, Object> map = new HashMap<>();
-        map.put("text", message);
-        map.put("time", System.currentTimeMillis());
-        map.put("senderId", FirebaseAuth.getInstance().getCurrentUser().getEmail());
-        String keyToPush = databaseReference.push().getKey();
-        databaseReference.child(keyToPush).setValue(map);
-    }
+
 
     public void destroy() {
         firebaseManager = null;

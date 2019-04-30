@@ -58,7 +58,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(intent);
     }
-
+    private void initLogin(String email, String password) {
+        mPrgressDialog.show();
+        mRegisterPresenter.register(this, email, password);
+    }
     private void checkRegistrationDetails() {
         if(!TextUtils.isEmpty(edtEmail.getText().toString()) && !TextUtils.isEmpty(edtPassword.getText().toString())){
             initLogin(edtEmail.getText().toString(), edtPassword.getText().toString());
@@ -71,10 +74,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    private void initLogin(String email, String password) {
-        mPrgressDialog.show();
-        mRegisterPresenter.register(this, email, password);
-    }
+
 
     @Override
     public void onRegistrationSuccess(FirebaseUser firebaseUser) {

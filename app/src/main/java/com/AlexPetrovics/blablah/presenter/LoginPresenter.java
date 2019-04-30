@@ -16,23 +16,6 @@ public class LoginPresenter {
         this.loginView = loginView;
     }
 
-    public void firebaseAnonymousAuth() {
-        loginView.onChangeButtonText();
-        FirebaseAuth.getInstance().signInAnonymously().addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (!task.isSuccessful()) {
-                    loginView.showToast("Authentication Failed");
-                } else {
-                    loginView.onAuthSuccess();
-                }
-            }
-        });
-    }
-    public void login(Activity activity, String email, String password) {
-        performFirebaseLogin(activity, email, password);
-
-    }
     public void performFirebaseLogin(Activity activity, String email, String password) {
         FirebaseAuth.getInstance()
                 .signInWithEmailAndPassword(email,password)
@@ -47,6 +30,11 @@ public class LoginPresenter {
                     }
                 });
     }
+    public void login(Activity activity, String email, String password) {
+        performFirebaseLogin(activity, email, password);
+
+    }
+
 
     public void invalidateRoom(String roomName) {
         if (roomName.trim().isEmpty()) {

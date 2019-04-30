@@ -39,22 +39,7 @@ public class QrActivity extends AppCompatActivity {
 
         text = findViewById(R.id.code_info);
 
-        //  final Button stateBtn = findViewById(R.id.btn_start_stop);
-        // change of reader state in dynamic
-        //  stateBtn.setOnClickListener(new View.OnClickListener() {
-        //     @Override
-        //   public void onClick(View v) {
-        //     if (qrEader.isCameraRunning()) {
-        //       stateBtn.setText("Start QREader");
-        //     qrEader.stop();
-        //      } else {
-        //        stateBtn.setText("Stop QREader");
-        //      qrEader.start();
-        //       }
-        // }
-        //  });
 
-        //   stateBtn.setVisibility(View.VISIBLE);
         Button sendBtn = findViewById(R.id.btn_send);
         sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
