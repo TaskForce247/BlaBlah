@@ -29,12 +29,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         initViews();
     }
     private void initViews() {
-        btnRegistration = (Button)findViewById(R.id.btn_register);
+        btnRegistration = findViewById(R.id.btn_register);
         btnRegistration.setOnClickListener(this);
-        tvLogin = (TextView)findViewById(R.id.tv_login);
+        tvLogin = findViewById(R.id.tv_login);
         tvLogin.setOnClickListener(this);
-        edtEmail = (EditText)findViewById(R.id.email_register);
-        edtPassword = (EditText)findViewById(R.id.password_register);
+        edtEmail = findViewById(R.id.email_register);
+        edtPassword = findViewById(R.id.password_register);
 
         mRegisterPresenter = new RegisterPresenter(this);
 
