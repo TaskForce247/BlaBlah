@@ -13,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.AlexPetrovics.blablah.R;
+import com.AlexPetrovics.blablah.presenter.LoginPresenter;
+import com.AlexPetrovics.blablah.utils.Utils;
 import com.AlexPetrovics.blablah.views.interfaces.LoginView;
 
 import butterknife.BindView;
@@ -39,14 +41,14 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     LinearLayout linearButtonRoom;
 
 
-    private LoginPresenter loginPresenters;
+    private LoginPresenter loginPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        loginPresenters = new LoginPresenters(this);
+        loginPresenter = new LoginPresenter(this);
     }
 
     @OnClick({R.id.button_auth, R.id.button_create_room, R.id.button_enter_room,R.id.button_register})
@@ -56,10 +58,10 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
                 checkLoginDetails();
                 break;
             case R.id.button_create_room:
-                loginPresenters.showRoomDialogInActivity();
+                loginPresenter.showRoomDialogInActivity();
                 break;
             case R.id.button_enter_room:
-                loginPresenters.showRoomDialogInActivity();
+                loginPresenter.showRoomDialogInActivity();
                 break;
             case R.id.button_register:
                 moveToRegisterActivity();
@@ -107,7 +109,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
                 String result = data.getStringExtra("result");
-                loginPresenters.invalidateRoom(result);
+                loginPresenter.invalidateRoom(result);
 
             }
             if (resultCode == RESULT_CANCELED) {
@@ -131,6 +133,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     }
     private void initLogin(String email, String password) {
 
-        loginPresenters.login(this, email, password);
+        loginPresenter.login(this, email, password);
     }
 }
