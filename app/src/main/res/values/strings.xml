@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">BlaBlah</string>
-    <string name="button_auth_text">Authenticate your self</string>
+    <string name="app_name">BlåBlah</string>
+    <string name="button_auth_text">Authenticate yourself</string>
     <string name="text_success">Authentication is successful</string>
     <string name="create_chat_room_text">Create Chat Room</string>
     <string name="enter_chat_room_text">Enter Chat Room</string>
