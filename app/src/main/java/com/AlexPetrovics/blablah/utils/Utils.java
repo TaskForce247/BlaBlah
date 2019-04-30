@@ -14,3 +14,4 @@ public class Utils {
         simpleDateFormat.setTimeZone(TimeZone.getDefault());
         return simpleDateFormat.format(date);
     }
+}

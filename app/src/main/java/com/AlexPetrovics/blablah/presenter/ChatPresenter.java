@@ -2,7 +2,10 @@ package com.AlexPetrovics.blablah.presenter;
 
 import com.AlexPetrovics.blablah.callbackInterface.FirebaseCallBack;
 import com.AlexPetrovics.blablah.callbackInterface.ModelCallBack;
+import com.AlexPetrovics.blablah.model.Chat;
 import com.AlexPetrovics.blablah.model.Message;
+import com.AlexPetrovics.blablah.utils.FirebaseManager;
+import com.AlexPetrovics.blablah.views.interfaces.ChatView;
 import com.google.firebase.database.DataSnapshot;
 
 import java.util.ArrayList;
@@ -35,7 +38,7 @@ public class ChatPresenter implements FirebaseCallBack, ModelCallBack {
 
     @Override
     public void onNewMessage(DataSnapshot dataSnapshot) {
-        messageModel.addMessages(dataSnapshot, this);
+        message.addMessages(dataSnapshot, this);
     }
 
     @Override

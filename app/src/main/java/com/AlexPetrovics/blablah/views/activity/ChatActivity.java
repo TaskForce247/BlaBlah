@@ -2,6 +2,8 @@ package com.AlexPetrovics.blablah.views.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -11,6 +13,7 @@ import com.AlexPetrovics.blablah.model.Chat;
 import com.AlexPetrovics.blablah.presenter.ChatPresenter;
 import com.AlexPetrovics.blablah.utils.Utils;
 import com.AlexPetrovics.blablah.views.adapter.ChatAdapter;
+import com.AlexPetrovics.blablah.views.interfaces.ChatView;
 
 import java.util.ArrayList;
 

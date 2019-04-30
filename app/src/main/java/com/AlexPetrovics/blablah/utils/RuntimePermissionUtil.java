@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 
+import com.AlexPetrovics.blablah.views.interfaces.RPResultListener;
+
 
 public class RuntimePermissionUtil {
     private RuntimePermissionUtil() {

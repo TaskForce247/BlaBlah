@@ -1,6 +1,7 @@
 package com.AlexPetrovics.blablah.views.adapter;
 
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import com.AlexPetrovics.blablah.R;
 import com.AlexPetrovics.blablah.model.Chat;
+import com.AlexPetrovics.blablah.utils.Utils;
 import com.google.firebase.auth.FirebaseAuth;
 import butterknife.BindView;
 import butterknife.ButterKnife;
