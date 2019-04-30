@@ -33,16 +33,18 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        if (chats.get(position).getSenderId().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
+        if (chats.get(position).getSenderId().equals(FirebaseAuth.getInstance().getCurrentUser().getEmail())) {
             holder.layoutMessageLeft.setVisibility(View.GONE);
             holder.layoutMessageRight.setVisibility(View.VISIBLE);
             holder.textMessageRight.setText(chats.get(position).getMessage());
             holder.textTimeMessagesRight.setText(Utils.convertTime(chats.get(position).getTimeStamp()));
+
         } else {
             holder.layoutMessageLeft.setVisibility(View.VISIBLE);
             holder.layoutMessageRight.setVisibility(View.GONE);
             holder.textMessageLeft.setText(chats.get(position).getMessage());
             holder.textTimeMessagesLeft.setText(Utils.convertTime(chats.get(position).getTimeStamp()));
+            holder.textSenderMessagesLeft.setText(chats.get(position).getSenderId());
         }
     }
 
@@ -64,6 +66,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
         TextView textMessageRight;
         @BindView(R.id.layout_message_right)
         LinearLayout layoutMessageRight;
+        @BindView(R.id.text_sender_messages_left)
+        TextView textSenderMessagesLeft;
 
         ViewHolder(View view) {
             super(view);
